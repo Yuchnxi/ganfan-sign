@@ -1,10 +1,18 @@
 <view class="page home-page">
+  <view class="home-decor" aria-hidden="true">
+    <text class="decor-star star-top-left">✦</text>
+    <text class="decor-star star-mid-left">✦</text>
+    <text class="decor-star star-mid-right">✦</text>
+    <text class="decor-star star-low-right">✦</text>
+    <view class="decor-dot dot-left"></view>
+    <view class="decor-dot dot-right"></view>
+  </view>
+
   <view class="hero">
-    <image class="hero-mascot" src="/assets/images/masco/mascot_rice_waving@2x.png" mode="aspectFit" />
-    <view class="hero-copy">
-      <text class="title-cn hero-title">干饭签</text>
-      <text class="hero-subtitle">今天吃什么，先求一签。</text>
-    </view>
+    <text class="sparkle sparkle-left">✦</text>
+    <text class="title-cn hero-title">干饭签</text>
+    <image class="hero-mascot" src="/assets/images/masco/mascot_rice_mini@2x.png" mode="aspectFit" />
+    <text class="hero-subtitle">干饭求一签，今天吃什么交给饭神吧！</text>
   </view>
 
   <view class="meal-switch" aria-label="选择餐次">
@@ -24,10 +32,32 @@
     </button>
   </view>
 
-  <view class="card draw-card">
-    <image class="draw-scene" src="/assets/images/scene/scene_qiantong@2x.png" mode="aspectFit" />
-    <text class="draw-title">{{mealTypeLabel}}签筒已备好</text>
-    <text class="draw-desc">云菜单接入后，这里会从你的食物列表里随机抽取。</text>
-    <button class="btn-primary draw-button" bindtap="onDrawTap">求一签</button>
+  <view class="draw-stage">
+    <view class="stage-ground stage-ground-back"></view>
+    <view class="stage-ground stage-ground-front"></view>
+    <view class="decor-cloud cloud-left">
+      <view class="cloud-puff cloud-puff-a"></view>
+      <view class="cloud-puff cloud-puff-b"></view>
+      <view class="cloud-puff cloud-puff-c"></view>
+    </view>
+    <view class="decor-cloud cloud-right">
+      <view class="cloud-puff cloud-puff-a"></view>
+      <view class="cloud-puff cloud-puff-b"></view>
+      <view class="cloud-puff cloud-puff-c"></view>
+    </view>
+    <view class="speech-bubble">
+      <text>一签在手，</text>
+      <text>干饭不愁！</text>
+      <view class="speech-tail"></view>
+    </view>
+    <image class="draw-scene" src="/assets/images/scene/home_bucket_with_tag@2x.png" mode="aspectFill" />
+    <image class="stage-friend stage-friend-rice" src="/assets/images/masco/mascot_rice_waving@2x.png" mode="aspectFit" />
+    <image class="stage-friend stage-friend-chick" src="/assets/images/characters/character_chick@2x.png" mode="aspectFill" />
+    <image class="stage-friend stage-friend-tomato" src="/assets/images/characters/character_tomato@2x.png" mode="aspectFill" />
+    <view class="draw-actions">
+      <button class="btn-primary draw-button" bindtap="onDrawTap">求一签</button>
+      <text class="draw-count">今日可抽 <text class="draw-count-strong">3</text> 次 ✨</text>
+    </view>
   </view>
+
 </view>
