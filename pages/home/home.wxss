@@ -1,0 +1,93 @@
+.home-page {
+  background: var(--color-bg-home);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.hero-mascot {
+  width: 176rpx;
+  height: 176rpx;
+  flex: 0 0 176rpx;
+}
+
+.hero-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.hero-title {
+  font-size: var(--font-size-xxl);
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.meal-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-card);
+}
+
+.meal-option {
+  min-height: 76rpx;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  line-height: 76rpx;
+  background: transparent;
+}
+
+.meal-option::after {
+  border: 0;
+}
+
+.meal-option-active {
+  color: var(--color-text-primary);
+  font-weight: 700;
+  background: var(--color-primary);
+}
+
+.draw-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.draw-scene {
+  width: 360rpx;
+  height: 280rpx;
+  margin-bottom: var(--spacing-md);
+}
+
+.draw-title {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.draw-desc {
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.draw-button {
+  width: 100%;
+}

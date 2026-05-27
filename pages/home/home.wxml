@@ -1,0 +1,33 @@
+<view class="page home-page">
+  <view class="hero">
+    <image class="hero-mascot" src="/assets/images/masco/mascot_rice_waving@2x.png" mode="aspectFit" />
+    <view class="hero-copy">
+      <text class="title-cn hero-title">干饭签</text>
+      <text class="hero-subtitle">今天吃什么，先求一签。</text>
+    </view>
+  </view>
+
+  <view class="meal-switch" aria-label="选择餐次">
+    <button
+      class="meal-option {{selectedMealType === 'lunch' ? 'meal-option-active' : ''}}"
+      data-type="lunch"
+      bindtap="onSelectMeal"
+    >
+      午餐
+    </button>
+    <button
+      class="meal-option {{selectedMealType === 'dinner' ? 'meal-option-active' : ''}}"
+      data-type="dinner"
+      bindtap="onSelectMeal"
+    >
+      晚餐
+    </button>
+  </view>
+
+  <view class="card draw-card">
+    <image class="draw-scene" src="/assets/images/scene/scene_qiantong@2x.png" mode="aspectFit" />
+    <text class="draw-title">{{mealTypeLabel}}签筒已备好</text>
+    <text class="draw-desc">云菜单接入后，这里会从你的食物列表里随机抽取。</text>
+    <button class="btn-primary draw-button" bindtap="onDrawTap">求一签</button>
+  </view>
+</view>

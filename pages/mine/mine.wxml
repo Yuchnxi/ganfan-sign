@@ -1,0 +1,19 @@
+<view class="page mine-page">
+  <view class="profile">
+    <image class="profile-avatar" src="/assets/images/masco/mascot_rice_holding_bowl@2x.png" mode="aspectFit" />
+    <view class="profile-copy">
+      <text class="profile-title">我的干饭小馆</text>
+      <text class="profile-subtitle">菜单、记录和设置会从这里进入。</text>
+    </view>
+  </view>
+
+  <view class="mine-list card">
+    <view class="mine-item" wx:for="{{menuItems}}" wx:key="id" data-url="{{item.url}}" bindtap="onMenuTap">
+      <view class="mine-item-main">
+        <image class="mine-item-icon" src="{{item.icon}}" mode="aspectFit" />
+        <text class="mine-item-label">{{item.label}}</text>
+      </view>
+      <image class="mine-item-arrow" src="/assets/icons/ui/icon_arrow_right.svg" mode="aspectFit" />
+    </view>
+  </view>
+</view>
