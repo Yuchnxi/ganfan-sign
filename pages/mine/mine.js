@@ -1,5 +1,10 @@
+const MINE_IMAGE_URLS = {
+  profileAvatar: 'cloud://cloud1-d7gw6xoc27e2a3d20.636c-cloud1-d7gw6xoc27e2a3d20-1304070199/masco/mascot_rice_holding_bowl@2x.png'
+};
+
 Page({
   data: {
+    imageUrls: MINE_IMAGE_URLS,
     menuItems: [
       {
         id: 'foods',

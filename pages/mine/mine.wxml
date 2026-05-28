@@ -1,6 +1,6 @@
 <view class="page mine-page">
   <view class="profile">
-    <image class="profile-avatar" src="/assets/images/masco/mascot_rice_holding_bowl@2x.png" mode="aspectFit" />
+    <image class="profile-avatar" src="{{imageUrls.profileAvatar}}" mode="aspectFit" />
     <view class="profile-copy">
       <text class="font-atmosphere profile-title">我的干饭小馆</text>
       <text class="profile-subtitle">菜单、记录和设置会从这里进入。</text>

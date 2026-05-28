@@ -11,7 +11,7 @@
   <view class="hero">
     <text class="sparkle sparkle-left">✦</text>
     <text class="title-cn hero-title">干饭签</text>
-    <image class="hero-mascot" src="/assets/images/masco/mascot_rice_mini@2x.png" mode="aspectFit" />
+    <image class="hero-mascot" src="{{imageUrls.heroMascot}}" mode="aspectFit" />
     <text class="hero-subtitle">干饭求一签，今天吃什么交给饭神吧！</text>
   </view>
 
@@ -50,10 +50,10 @@
       <text>干饭不愁！</text>
       <view class="speech-tail"></view>
     </view>
-    <image class="draw-scene" src="/assets/images/scene/home_bucket_with_tag@2x.png" mode="aspectFill" />
-    <image class="stage-friend stage-friend-rice" src="/assets/images/masco/mascot_rice_waving@2x.png" mode="aspectFit" />
-    <image class="stage-friend stage-friend-chick" src="/assets/images/characters/character_chick@2x.png" mode="aspectFill" />
-    <image class="stage-friend stage-friend-tomato" src="/assets/images/characters/character_tomato@2x.png" mode="aspectFill" />
+    <image class="draw-scene" src="{{imageUrls.drawScene}}" mode="aspectFill" />
+    <image class="stage-friend stage-friend-rice" src="{{imageUrls.riceFriend}}" mode="aspectFit" />
+    <image class="stage-friend stage-friend-chick" src="{{imageUrls.chickFriend}}" mode="aspectFill" />
+    <image class="stage-friend stage-friend-tomato" src="{{imageUrls.tomatoFriend}}" mode="aspectFill" />
     <view class="draw-actions">
       <button class="btn-primary draw-button" bindtap="onDrawTap">求一签</button>
       <text class="draw-count">今日可抽 <text class="draw-count-strong">3</text> 次 ✨</text>
