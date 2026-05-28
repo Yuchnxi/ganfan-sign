@@ -1,15 +1,19 @@
 import { CLOUD_ENV_ID } from './utils/constants';
+import { ensureDailyDraw, ensureDefaultFoods, ensureDefaultSettings } from './utils/cloud-db';
+import { formatDate } from './utils/date';
 import { TANGYUAN_FONT_FAMILY, TANGYUAN_FONT_SOURCE } from './utils/tangyuan-font-source';
 
 App({
   globalData: {
     cloudReady: false,
+    cloudInitError: '',
     atmosphereFontReady: false
   },
 
   // 小程序启动时初始化云开发；环境 ID 未配置时使用开发者工具当前默认环境。
   onLaunch() {
     this.initCloud();
+    this.initCloudData();
     this.loadAtmosphereFont();
   },
 
@@ -33,6 +37,29 @@ App({
 
     wx.cloud.init(cloudConfig);
     this.globalData.cloudReady = true;
+  },
+
+  // 初始化首版必要云数据：默认菜单、默认设置和当天抽签计数。
+  async initCloudData() {
+    if (!this.globalData.cloudReady) {
+      return;
+    }
+
+    const today = formatDate();
+    const results = await Promise.all([
+      ensureDefaultFoods(),
+      ensureDefaultSettings(),
+      ensureDailyDraw(today)
+    ]);
+    const failedResult = results.find((result) => result.error);
+
+    if (failedResult) {
+      this.globalData.cloudInitError = failedResult.error;
+      wx.showToast({
+        title: failedResult.error,
+        icon: 'none'
+      });
+    }
   },
 
   // 加载氛围字体，仅用于标题、按钮和抽签结果等少量装饰文字。

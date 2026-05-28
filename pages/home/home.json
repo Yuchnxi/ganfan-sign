@@ -2,5 +2,6 @@
   "navigationBarTitleText": "干饭签",
   "navigationBarBackgroundColor": "#FFF4D6",
   "navigationBarTextStyle": "black",
+  "disableScroll": true,
   "usingComponents": {}
 }

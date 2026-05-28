@@ -1,5 +1,10 @@
+const MINE_IMAGE_URLS = {
+  profileAvatar: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/masco/mascot_rice_holding_bowl@2x.png'
+};
+
 Page({
   data: {
+    imageUrls: MINE_IMAGE_URLS,
     menuItems: [
       {
         id: 'foods',
