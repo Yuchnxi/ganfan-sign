@@ -17,14 +17,14 @@
 
   <view class="meal-switch" aria-label="选择餐次">
     <button
-      class="meal-option {{selectedMealType === 'lunch' ? 'meal-option-active' : ''}}"
+      class="font-atmosphere meal-option {{selectedMealType === 'lunch' ? 'meal-option-active' : ''}}"
       data-type="lunch"
       bindtap="onSelectMeal"
     >
       午餐
     </button>
     <button
-      class="meal-option {{selectedMealType === 'dinner' ? 'meal-option-active' : ''}}"
+      class="font-atmosphere meal-option {{selectedMealType === 'dinner' ? 'meal-option-active' : ''}}"
       data-type="dinner"
       bindtap="onSelectMeal"
     >
@@ -45,7 +45,7 @@
       <view class="cloud-puff cloud-puff-b"></view>
       <view class="cloud-puff cloud-puff-c"></view>
     </view>
-    <view class="speech-bubble">
+    <view class="font-atmosphere speech-bubble">
       <text>一签在手，</text>
       <text>干饭不愁！</text>
       <view class="speech-tail"></view>
