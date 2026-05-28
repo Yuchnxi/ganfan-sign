@@ -55,8 +55,35 @@
     <image class="stage-friend stage-friend-chick" src="{{imageUrls.chickFriend}}" mode="aspectFill" />
     <image class="stage-friend stage-friend-tomato" src="{{imageUrls.tomatoFriend}}" mode="aspectFill" />
     <view class="draw-actions">
-      <button class="btn-primary draw-button" bindtap="onDrawTap">求一签</button>
-      <text class="draw-count">今日可抽 <text class="draw-count-strong">3</text> 次 ✨</text>
+      <button class="btn-primary draw-button" loading="{{loading}}" disabled="{{loading}}" bindtap="onDrawTap">
+        {{loading ? '求签中...' : '求一签'}}
+      </button>
+      <text class="draw-count">今日可抽 <text class="draw-count-strong">{{remainingDraws}}</text> 次 ✨</text>
+    </view>
+  </view>
+
+  <view class="result-mask" wx:if="{{showResultDialog && drawResult}}">
+    <view class="result-dialog">
+      <view class="result-ribbon">
+        <text>今日{{drawResult.mealTypeLabel}}签</text>
+      </view>
+      <text class="font-atmosphere result-food-name">{{drawResult.foodName}}</text>
+      <view class="result-content">
+        <image class="result-food-image" src="{{drawResult.foodImage}}" mode="aspectFit" binderror="onResultImageError" />
+        <view class="result-copy">
+          <text class="result-tag">签文</text>
+          <text class="result-fortune">{{drawResult.fortuneText}}</text>
+        </view>
+      </view>
+      <view class="result-actions">
+        <button class="result-button result-button-secondary" disabled="{{loading}}" bindtap="onRedrawTap">
+          再来一次
+        </button>
+        <button class="result-button result-button-primary" loading="{{loading}}" disabled="{{loading}}" bindtap="onAcceptTap">
+          就吃这个
+        </button>
+      </view>
+      <text class="result-hint">不满意？再抽一次试试！</text>
     </view>
   </view>
 

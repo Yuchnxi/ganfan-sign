@@ -1,14 +1,14 @@
 const COS_BASE_URL = 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com';
 
 export const FOOD_IMAGE_URLS = {
-  food_huangmenji_lg: `${COS_BASE_URL}/foods/food_huangmenji_lg@2x.png`,
-  food_huangmenji_sm: `${COS_BASE_URL}/foods/food_huangmenji_sm@2x.png`,
-  food_zhujiaofan: `${COS_BASE_URL}/foods/food_zhujiaofan@2x.png`,
-  food_malatang: `${COS_BASE_URL}/foods/food_malatang@2x.png`,
-  food_niuroufen: `${COS_BASE_URL}/foods/food_niuroufen@2x.png`,
-  food_shousi: `${COS_BASE_URL}/foods/food_shousi@2x.png`,
-  food_kaoyu: `${COS_BASE_URL}/foods/food_kaoyu@2x.png`,
-  food_shaxian: `${COS_BASE_URL}/foods/food_shaxian@2x.png`
+  food_huangmenji_lg: `${COS_BASE_URL}/food/food_huangmenji_lg@2x.png`,
+  food_huangmenji_sm: `${COS_BASE_URL}/food/food_huangmenji_sm@2x.png`,
+  food_zhujiaofan: `${COS_BASE_URL}/food/food_zhujiaofan@2x.png`,
+  food_malatang: `${COS_BASE_URL}/food/food_malatang@2x.png`,
+  food_niuroufen: `${COS_BASE_URL}/food/food_niuroufen@2x.png`,
+  food_shousi: `${COS_BASE_URL}/food/food_shousi@2x.png`,
+  food_kaoyu: `${COS_BASE_URL}/food/food_kaoyu@2x.png`,
+  food_shaxian: `${COS_BASE_URL}/food/food_shaxian@2x.png`
 };
 
 export const DEFAULT_FOODS = [
