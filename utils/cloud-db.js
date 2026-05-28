@@ -1,5 +1,5 @@
 import { COLLECTIONS, DEFAULT_SETTINGS, STORAGE_KEYS } from './constants';
-import { DEFAULT_FOODS, FOOD_IMAGE_FILE_IDS } from '../data/default-foods';
+import { DEFAULT_FOODS } from '../data/default-foods';
 
 // 获取云数据库实例；所有云数据库访问都从这里进入，便于统一降级和错误处理。
 export function getDb() {
@@ -62,29 +62,50 @@ function withoutCloudId(data) {
   return restData;
 }
 
-// 根据默认食物 id 回填云存储图片，只补空字段，避免覆盖用户自定义图片。
-async function fillFoodImages(foods) {
+// 同步默认食物数据：补齐缺失食物，并把旧云存储图片地址迁移到 COS。
+async function syncDefaultFoods(foods) {
   const db = getDb();
   const now = Date.now();
-  const foodsWithoutImages = foods.filter((food) => (
-    !food.image && FOOD_IMAGE_FILE_IDS[food.id]
-  ));
-  const foodsWithImages = foods.map((food) => ({
-    ...food,
-    image: food.image || FOOD_IMAGE_FILE_IDS[food.id] || ''
+  const defaultFoodMap = DEFAULT_FOODS.reduce((map, food) => ({
+    ...map,
+    [food.id]: food
+  }), {});
+  const existingFoodIds = foods.map((food) => food.id);
+  const foodsToAdd = DEFAULT_FOODS.filter((food) => !existingFoodIds.includes(food.id));
+  const foodsToUpdate = foods.filter((food) => {
+    const defaultFood = defaultFoodMap[food.id];
+
+    return defaultFood && food.image !== defaultFood.image;
+  });
+  const addTasks = foodsToAdd.map((food, index) => db.collection(COLLECTIONS.FOODS).add({
+    data: {
+      ...food,
+      createdAt: now + index,
+      updatedAt: now + index
+    }
   }));
-  const tasks = foodsWithoutImages.map((food) => db.collection(COLLECTIONS.FOODS)
+  const updateTasks = foodsToUpdate.map((food) => db.collection(COLLECTIONS.FOODS)
     .where({ id: food.id })
     .update({
       data: {
-        image: FOOD_IMAGE_FILE_IDS[food.id],
+        image: defaultFoodMap[food.id].image,
         updatedAt: now
       }
     }));
 
-  await Promise.all(tasks);
+  await Promise.all([...addTasks, ...updateTasks]);
 
-  return foodsWithImages;
+  return [
+    ...foods.map((food) => ({
+      ...food,
+      image: defaultFoodMap[food.id] ? defaultFoodMap[food.id].image : food.image
+    })),
+    ...foodsToAdd.map((food, index) => ({
+      ...food,
+      createdAt: now + index,
+      updatedAt: now + index
+    }))
+  ];
 }
 
 // 读取当前用户的食物列表；云端为空或失败时返回安全结构，页面据此展示提示。
@@ -113,10 +134,10 @@ export async function ensureDefaultFoods() {
     }
 
     if (foodsResult.data.length > 0) {
-      const foodsWithImages = await fillFoodImages(foodsResult.data);
+      const syncedFoods = await syncDefaultFoods(foodsResult.data);
 
-      setCache(STORAGE_KEYS.CACHE_FOODS, foodsWithImages);
-      return ok(foodsWithImages);
+      setCache(STORAGE_KEYS.CACHE_FOODS, syncedFoods);
+      return ok(syncedFoods);
     }
 
     const now = Date.now();

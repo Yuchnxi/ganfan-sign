@@ -4,11 +4,11 @@ const MEAL_TYPE_LABELS = {
 };
 
 const HOME_IMAGE_URLS = {
-  heroMascot: 'cloud://cloud1-d7gw6xoc27e2a3d20.636c-cloud1-d7gw6xoc27e2a3d20-1304070199/masco/mascot_rice_mini@2x.png',
-  drawScene: 'cloud://cloud1-d7gw6xoc27e2a3d20.636c-cloud1-d7gw6xoc27e2a3d20-1304070199/scene/home_bucket_with_tag@2x.png',
-  riceFriend: 'cloud://cloud1-d7gw6xoc27e2a3d20.636c-cloud1-d7gw6xoc27e2a3d20-1304070199/masco/mascot_rice_waving@2x.png',
-  chickFriend: 'cloud://cloud1-d7gw6xoc27e2a3d20.636c-cloud1-d7gw6xoc27e2a3d20-1304070199/characters/character_chick@2x.png',
-  tomatoFriend: 'cloud://cloud1-d7gw6xoc27e2a3d20.636c-cloud1-d7gw6xoc27e2a3d20-1304070199/characters/character_tomato@2x.png'
+  heroMascot: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/masco/mascot_rice_mini@2x.png',
+  drawScene: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/scene/home_bucket_with_tag@2x.png',
+  riceFriend: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/masco/mascot_rice_waving@2x.png',
+  chickFriend: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/characters/character_chick@2x.png',
+  tomatoFriend: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/characters/character_tomato@2x.png'
 };
 
 Page({
