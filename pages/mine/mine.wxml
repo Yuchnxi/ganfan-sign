@@ -5,6 +5,9 @@
       <text class="font-atmosphere profile-title">我的干饭小馆</text>
       <text class="profile-subtitle">今天吃什么，明天也有迹可循。</text>
     </view>
+    <view class="profile-setting" bindtap="onMenuSettingTap">
+      <image class="profile-setting__icon" src="/assets/icons/ui/icon_setting.svg" mode="aspectFit" />
+    </view>
   </view>
 
   <view class="eaten-card card">

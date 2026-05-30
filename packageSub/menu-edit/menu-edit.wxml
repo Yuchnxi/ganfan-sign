@@ -1,0 +1,37 @@
+<view class="page menu-page">
+  <view class="menu-card card">
+    <view class="menu-header">
+      <image class="menu-header__icon" src="/assets/icons/ui/icon_bowl.svg" mode="aspectFit" />
+      <text class="menu-header__title">我的菜单</text>
+    </view>
+
+    <view class="menu-status" wx:if="{{loading}}">
+      <text>正在端出菜单...</text>
+    </view>
+
+    <view class="menu-status menu-status--error" wx:elif="{{error}}">
+      <text>{{error}}</text>
+    </view>
+
+    <view class="menu-status" wx:elif="{{!foods.length}}">
+      <text>还没有菜单，后续可以从这里添加爱吃的。</text>
+    </view>
+
+    <view wx:else>
+      <view
+        class="food-row"
+        wx:for="{{foods}}"
+        wx:key="id"
+      >
+        <image class="food-row__image" src="{{item.image}}" mode="aspectFit" lazy-load="{{true}}" />
+        <view class="food-row__info">
+          <view class="food-row__main">
+            <text class="food-row__name">{{item.name}}</text>
+            <text class="food-status {{item.statusClass}}">{{item.statusText}}</text>
+          </view>
+          <text class="food-row__meta">{{item.mealTypeText}} · {{item.categoryLabel}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

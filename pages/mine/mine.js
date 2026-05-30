@@ -176,5 +176,12 @@ Page({
     wx.navigateTo({
       url: '/packageSub/records/records'
     });
+  },
+
+  // 进入我的菜单页面。
+  onMenuSettingTap() {
+    wx.navigateTo({
+      url: '/packageSub/menu-edit/menu-edit'
+    });
   }
 });

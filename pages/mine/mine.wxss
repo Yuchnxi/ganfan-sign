@@ -18,6 +18,7 @@
 .profile-copy {
   display: flex;
   flex: 1;
+  min-width: 0;
   flex-direction: column;
   gap: var(--spacing-xs);
 }
@@ -31,6 +32,28 @@
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   line-height: 1.5;
+}
+
+.profile-setting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76rpx;
+  height: 76rpx;
+  flex: 0 0 76rpx;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-setting:active {
+  transform: scale(0.96);
+}
+
+.profile-setting__icon {
+  width: 38rpx;
+  height: 38rpx;
 }
 
 .eaten-card {
