@@ -1,0 +1,63 @@
+.records-page {
+  background: var(--color-bg-mine);
+}
+
+.records-card {
+  padding: var(--spacing-lg);
+}
+
+.records-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.records-header__icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.records-header__title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.record-status {
+  padding: var(--spacing-xl) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.record-status--error {
+  color: var(--color-danger);
+}
+
+.record-row {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 96rpx minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: var(--spacing-sm);
+  min-height: 64rpx;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.record-row:last-child {
+  border-bottom: 0;
+}
+
+.record-date {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.record-meal {
+  overflow: hidden;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

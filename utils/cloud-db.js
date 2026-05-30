@@ -419,9 +419,12 @@ export async function getAcceptedRecords(startDate, endDate) {
   try {
     const db = getDb();
     const command = db.command;
+    const pageSize = 20;
     const query = {
       accepted: true
     };
+    let records = [];
+    let pageIndex = 0;
 
     if (startDate && endDate) {
       query.date = command.gte(startDate).and(command.lte(endDate));
@@ -431,12 +434,26 @@ export async function getAcceptedRecords(startDate, endDate) {
       query.date = command.lte(endDate);
     }
 
-    const result = await db.collection(COLLECTIONS.RECORDS)
-      .where(query)
-      .orderBy('createdAt', 'desc')
-      .get();
+    // 云数据库单次 get 有数量上限，分页拉取避免记录页和统计漏掉旧数据。
+    while (true) {
+      const result = await db.collection(COLLECTIONS.RECORDS)
+        .where(query)
+        .orderBy('createdAt', 'desc')
+        .skip(pageIndex * pageSize)
+        .limit(pageSize)
+        .get();
+      const pageRecords = result.data || [];
 
-    return ok(result.data || []);
+      records = records.concat(pageRecords);
+
+      if (pageRecords.length < pageSize) {
+        break;
+      }
+
+      pageIndex += 1;
+    }
+
+    return ok(records);
   } catch (error) {
     return fail([], error, '已吃记录读取失败');
   }

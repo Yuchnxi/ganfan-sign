@@ -328,17 +328,6 @@
   color: var(--home-title-color);
 }
 
-.draw-count {
-  margin-top: var(--spacing-md);
-  color: var(--home-muted-color);
-  font-size: var(--font-size-sm);
-}
-
-.draw-count-strong {
-  color: var(--color-accent-red);
-  font-weight: 700;
-}
-
 .result-mask {
   position: fixed;
   inset: 0;

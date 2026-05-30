@@ -3,17 +3,119 @@
     <image class="profile-avatar" src="{{imageUrls.profileAvatar}}" mode="aspectFit" />
     <view class="profile-copy">
       <text class="font-atmosphere profile-title">我的干饭小馆</text>
-      <text class="profile-subtitle">菜单、记录和设置会从这里进入。</text>
+      <text class="profile-subtitle">今天吃什么，明天也有迹可循。</text>
+    </view>
+    <view class="profile-setting" bindtap="onSettingsTap">
+      <image class="profile-setting__icon" src="/assets/icons/ui/icon_setting.svg" mode="aspectFit" />
     </view>
   </view>
 
-  <view class="mine-list card">
-    <view class="mine-item" wx:for="{{menuItems}}" wx:key="id" data-url="{{item.url}}" bindtap="onMenuTap">
-      <view class="mine-item-main">
-        <image class="mine-item-icon" src="{{item.icon}}" mode="aspectFit" />
-        <text class="mine-item-label">{{item.label}}</text>
+  <view class="menu-entry card" bindtap="onMenuTap">
+    <view class="menu-entry__main">
+      <image class="menu-entry__icon" src="/assets/icons/ui/icon_bowl.svg" mode="aspectFit" />
+      <text class="menu-entry__label">我的菜单</text>
+    </view>
+    <image class="menu-entry__arrow" src="/assets/icons/ui/icon_arrow_right.svg" mode="aspectFit" />
+  </view>
+
+  <view class="eaten-card card">
+    <image class="eaten-card__mascot" src="{{imageUrls.recordMascot}}" mode="aspectFit" />
+
+    <view class="eaten-card__header">
+      <image class="eaten-card__icon" src="/assets/icons/ui/icon_calendar.svg" mode="aspectFit" />
+      <text class="eaten-card__title">已吃记录</text>
+    </view>
+
+    <view class="record-status" wx:if="{{loadingRecords}}">
+      <text>正在端菜...</text>
+    </view>
+
+    <view class="record-status record-status--error" wx:elif="{{recordError}}">
+      <text>{{recordError}}</text>
+    </view>
+
+    <view wx:else>
+      <view class="today-row">
+        <view class="today-date">
+          <text class="today-label">今天</text>
+          <text class="today-day">{{todaySummary.displayDate}}</text>
+        </view>
+        <view class="today-meals">
+          <text class="meal-text">午餐：{{todaySummary.lunch}}</text>
+          <text class="meal-text">晚餐：{{todaySummary.dinner}}</text>
+        </view>
       </view>
-      <image class="mine-item-arrow" src="/assets/icons/ui/icon_arrow_right.svg" mode="aspectFit" />
+
+      <view class="history-block">
+        <text class="history-title">历史记录</text>
+
+        <view class="history-empty" wx:if="{{!historyRows.length && !hasRecords}}">
+          <text>还没有已吃记录，去首页点“就吃这个”后会出现。</text>
+        </view>
+
+        <view
+          class="history-row"
+          wx:for="{{historyRows}}"
+          wx:key="date"
+        >
+          <text class="history-date">{{item.displayDate}}</text>
+          <text class="history-meal">午餐：{{item.lunch}}</text>
+          <text class="history-meal">晚餐：{{item.dinner}}</text>
+        </view>
+      </view>
+
+      <view class="more-records" bindtap="onMoreRecordsTap">
+        <text>查看更多记录</text>
+        <image class="more-records__arrow" src="/assets/icons/ui/icon_arrow_right.svg" mode="aspectFit" />
+      </view>
+    </view>
+  </view>
+
+  <view class="stats-card card">
+    <view class="stats-card__header">
+      <view class="stats-card__title-wrap">
+        <image class="stats-card__icon" src="/assets/icons/ui/icon_chart.svg" mode="aspectFit" />
+        <text class="stats-card__title">吃饭统计</text>
+        <text class="stats-card__period">本周</text>
+      </view>
+    </view>
+
+    <view class="stats-grid">
+      <view class="stats-item stats-item--count">
+        <text class="stats-item__label">吃了几顿</text>
+        <view class="stats-count">
+          <text class="stats-count__number">{{weeklyStats.totalMeals}}</text>
+          <text class="stats-count__unit">顿</text>
+        </view>
+      </view>
+
+      <view class="stats-item stats-item--food">
+        <image class="stats-badge-image stats-badge-image--crown" src="/assets/images/decorations/deco_crown.svg" mode="aspectFit" />
+        <text class="stats-item__label">最常吃食物</text>
+        <text class="stats-item__value">{{weeklyStats.mostFoodName}}</text>
+      </view>
+
+      <view class="stats-item stats-item--category">
+        <image class="stats-badge-image stats-badge-image--sparkle" src="/assets/images/decorations/deco_sparkle.svg" mode="aspectFit" />
+        <text class="stats-item__label">最常吃分类</text>
+        <text class="stats-item__value">{{weeklyStats.mostCategoryLabel}}</text>
+      </view>
+
+      <view class="stats-item stats-item--meal">
+        <image class="stats-food-image" src="{{weeklyStats.topLunchImage}}" mode="aspectFit" lazy-load="{{true}}" />
+        <view class="stats-meal-copy">
+          <text class="stats-item__label">午餐最多</text>
+          <text class="stats-item__value">{{weeklyStats.topLunchName}}</text>
+        </view>
+      </view>
+
+      <view class="stats-item stats-item--meal stats-item--dinner">
+        <image class="stats-food-image" src="{{weeklyStats.topDinnerImage}}" mode="aspectFit" lazy-load="{{true}}" />
+        <view class="stats-meal-copy">
+          <text class="stats-item__label">晚餐最多</text>
+          <text class="stats-item__value">{{weeklyStats.topDinnerName}}</text>
+        </view>
+      </view>
     </view>
   </view>
 </view>
