@@ -59,4 +59,52 @@
       </view>
     </view>
   </view>
+
+  <view class="stats-card card">
+    <view class="stats-card__header">
+      <view class="stats-card__title-wrap">
+        <image class="stats-card__icon" src="/assets/icons/ui/icon_chart.svg" mode="aspectFit" />
+        <text class="stats-card__title">吃饭统计</text>
+        <text class="stats-card__period">本周</text>
+      </view>
+    </view>
+
+    <view class="stats-grid">
+      <view class="stats-item stats-item--count">
+        <text class="stats-item__label">吃了几顿</text>
+        <view class="stats-count">
+          <text class="stats-count__number">{{weeklyStats.totalMeals}}</text>
+          <text class="stats-count__unit">顿</text>
+        </view>
+      </view>
+
+      <view class="stats-item stats-item--food">
+        <image class="stats-badge-image stats-badge-image--crown" src="/assets/images/decorations/deco_crown.svg" mode="aspectFit" />
+        <text class="stats-item__label">最常吃食物</text>
+        <text class="stats-item__value">{{weeklyStats.mostFoodName}}</text>
+      </view>
+
+      <view class="stats-item stats-item--category">
+        <image class="stats-badge-image stats-badge-image--sparkle" src="/assets/images/decorations/deco_sparkle.svg" mode="aspectFit" />
+        <text class="stats-item__label">最常吃分类</text>
+        <text class="stats-item__value">{{weeklyStats.mostCategoryLabel}}</text>
+      </view>
+
+      <view class="stats-item stats-item--meal">
+        <image class="stats-food-image" src="{{weeklyStats.topLunchImage}}" mode="aspectFit" lazy-load="{{true}}" />
+        <view class="stats-meal-copy">
+          <text class="stats-item__label">午餐最多</text>
+          <text class="stats-item__value">{{weeklyStats.topLunchName}}</text>
+        </view>
+      </view>
+
+      <view class="stats-item stats-item--meal stats-item--dinner">
+        <image class="stats-food-image" src="{{weeklyStats.topDinnerImage}}" mode="aspectFit" lazy-load="{{true}}" />
+        <view class="stats-meal-copy">
+          <text class="stats-item__label">晚餐最多</text>
+          <text class="stats-item__value">{{weeklyStats.topDinnerName}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

@@ -179,3 +179,150 @@
   width: 24rpx;
   height: 24rpx;
 }
+
+.stats-card {
+  margin-top: var(--spacing-lg);
+  padding: 34rpx var(--spacing-lg) 36rpx;
+}
+
+.stats-card__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28rpx;
+}
+
+.stats-card__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.stats-card__icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.stats-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.stats-card__period {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--spacing-md);
+}
+
+.stats-item {
+  position: relative;
+  display: flex;
+  min-height: 152rpx;
+  box-sizing: border-box;
+  padding: 30rpx var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.stats-item--count,
+.stats-item--food,
+.stats-item--category {
+  grid-column: span 2;
+}
+
+.stats-item--food {
+  align-items: center;
+  background: var(--color-tag-lunch-bg);
+}
+
+.stats-item--category {
+  align-items: center;
+  background: var(--color-tag-dinner-bg);
+}
+
+.stats-item--meal {
+  grid-column: span 3;
+  display: flex;
+  min-height: 144rpx;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-md);
+  text-align: left;
+  background: var(--color-tag-both-bg);
+}
+
+.stats-item--dinner {
+  background: var(--color-tag-huoguo-bg);
+}
+
+.stats-item__label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.stats-item__value {
+  overflow: hidden;
+  margin-top: 10rpx;
+  color: var(--color-text-primary);
+  font-size: 30rpx;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stats-count {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12rpx;
+}
+
+.stats-count__number {
+  color: var(--color-tag-red);
+  font-size: 52rpx;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stats-count__unit {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.stats-badge-image {
+  position: absolute;
+  top: -15rpx;
+  right: -4rpx;
+  width: 42rpx;
+  height: 42rpx;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stats-badge-image--sparkle {
+  top: -15rpx;
+  right: -2rpx;
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.stats-food-image {
+  width: 88rpx;
+  height: 88rpx;
+  flex: 0 0 88rpx;
+}
+
+.stats-meal-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+}

@@ -57,7 +57,10 @@ Page({
         rowMap[date] = createEmptyDay(date);
       }
 
-      if (record.mealType === 'lunch' || record.mealType === 'dinner') {
+      if (
+        (record.mealType === 'lunch' || record.mealType === 'dinner')
+        && rowMap[date][record.mealType] === '待记录'
+      ) {
         rowMap[date][record.mealType] = record.foodName || '未知食物';
       }
     });
