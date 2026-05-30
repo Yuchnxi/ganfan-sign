@@ -5,17 +5,9 @@
       <text class="font-atmosphere profile-title">我的干饭小馆</text>
       <text class="profile-subtitle">今天吃什么，明天也有迹可循。</text>
     </view>
-    <view class="profile-setting" bindtap="onSettingsTap">
+    <view class="profile-setting" bindtap="onMenuTap">
       <image class="profile-setting__icon" src="/assets/icons/ui/icon_setting.svg" mode="aspectFit" />
     </view>
-  </view>
-
-  <view class="menu-entry card" bindtap="onMenuTap">
-    <view class="menu-entry__main">
-      <image class="menu-entry__icon" src="/assets/icons/ui/icon_bowl.svg" mode="aspectFit" />
-      <text class="menu-entry__label">我的菜单</text>
-    </view>
-    <image class="menu-entry__arrow" src="/assets/icons/ui/icon_arrow_right.svg" mode="aspectFit" />
   </view>
 
   <view class="eaten-card card">

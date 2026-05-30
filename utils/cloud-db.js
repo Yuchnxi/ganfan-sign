@@ -44,6 +44,35 @@ function setCache(key, data) {
   }
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+// 微信开发者工具偶发 timeout 时自动重试一次，普通权限或参数错误不重复请求。
+function isRetryableCloudError(error) {
+  const message = `${error.message || ''} ${error.errMsg || ''}`.toLowerCase();
+
+  return message.includes('timeout')
+    || message.includes('timed out')
+    || message.includes('network')
+    || message.includes('fail');
+}
+
+async function runCloudRequest(requestTask) {
+  try {
+    return await requestTask();
+  } catch (error) {
+    if (!isRetryableCloudError(error)) {
+      throw error;
+    }
+
+    await sleep(300);
+    return requestTask();
+  }
+}
+
 // 给新增数据补齐基础时间字段，保持集合里的结构稳定。
 function withTimestamps(data) {
   const now = Date.now();
@@ -112,9 +141,9 @@ async function syncDefaultFoods(foods) {
 export async function getFoods() {
   try {
     const db = getDb();
-    const result = await db.collection(COLLECTIONS.FOODS)
+    const result = await runCloudRequest(() => db.collection(COLLECTIONS.FOODS)
       .orderBy('createdAt', 'asc')
-      .get();
+      .get());
     const foods = result.data || [];
 
     setCache(STORAGE_KEYS.CACHE_FOODS, foods);
@@ -219,7 +248,7 @@ export async function deleteFood(foodId) {
 export async function getSettings() {
   try {
     const db = getDb();
-    const result = await db.collection(COLLECTIONS.SETTINGS).limit(1).get();
+    const result = await runCloudRequest(() => db.collection(COLLECTIONS.SETTINGS).limit(1).get());
     const settings = {
       ...DEFAULT_SETTINGS,
       ...(result.data[0] || {})
@@ -297,10 +326,10 @@ export async function saveSettings(settings) {
 export async function getDailyDraw(date) {
   try {
     const db = getDb();
-    const result = await db.collection(COLLECTIONS.DAILY_DRAWS)
+    const result = await runCloudRequest(() => db.collection(COLLECTIONS.DAILY_DRAWS)
       .where({ date })
       .limit(1)
-      .get();
+      .get());
 
     return ok(result.data[0] || { date, count: 0 });
   } catch (error) {
@@ -436,12 +465,12 @@ export async function getAcceptedRecords(startDate, endDate) {
 
     // 云数据库单次 get 有数量上限，分页拉取避免记录页和统计漏掉旧数据。
     while (true) {
-      const result = await db.collection(COLLECTIONS.RECORDS)
+      const result = await runCloudRequest(() => db.collection(COLLECTIONS.RECORDS)
         .where(query)
         .orderBy('createdAt', 'desc')
         .skip(pageIndex * pageSize)
         .limit(pageSize)
-        .get();
+        .get());
       const pageRecords = result.data || [];
 
       records = records.concat(pageRecords);

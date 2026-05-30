@@ -56,45 +56,6 @@
   height: 38rpx;
 }
 
-.menu-entry {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 104rpx;
-  box-sizing: border-box;
-  margin-bottom: var(--spacing-lg);
-  padding: 0 var(--spacing-lg);
-}
-
-.menu-entry:active {
-  transform: scale(0.99);
-}
-
-.menu-entry__main {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  min-width: 0;
-}
-
-.menu-entry__icon {
-  width: 42rpx;
-  height: 42rpx;
-  flex: 0 0 42rpx;
-}
-
-.menu-entry__label {
-  color: var(--color-text-primary);
-  font-size: var(--font-size-md);
-  font-weight: 700;
-}
-
-.menu-entry__arrow {
-  width: 28rpx;
-  height: 28rpx;
-  flex: 0 0 28rpx;
-}
-
 .eaten-card {
   position: relative;
   overflow: hidden;

@@ -4,8 +4,8 @@ import { formatDate } from '../../utils/date';
 const MINE_IMAGE_URLS = {
   profileAvatar: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/masco/mascot_rice_holding_bowl@2x.png',
   recordMascot: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/masco/mascot_rice_waving@2x.png',
-  statsLunch: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/foods/food_huangmenji_lg@2x.png',
-  statsDinner: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/foods/food_malatang@2x.png'
+  statsLunch: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/food/food_huangmenji_lg@2x.png',
+  statsDinner: 'https://ganfan-sign-1304377482.cos.ap-guangzhou.myqcloud.com/food/food_malatang@2x.png'
 };
 
 const CATEGORY_LABELS = {
@@ -182,14 +182,6 @@ Page({
   onMenuTap() {
     wx.navigateTo({
       url: '/packageSub/menu-edit/menu-edit'
-    });
-  },
-
-  // 设置页暂未接入时保留明确入口，避免齿轮图标跳到其他页面。
-  onSettingsTap() {
-    wx.showToast({
-      title: '设置页待搭建',
-      icon: 'none'
     });
   }
 });
