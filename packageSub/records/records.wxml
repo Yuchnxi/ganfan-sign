@@ -1,0 +1,32 @@
+<view class="page records-page">
+  <view class="records-card card">
+    <view class="records-header">
+      <image class="records-header__icon" src="/assets/icons/ui/icon_calendar.svg" mode="aspectFit" />
+      <text class="records-header__title">已吃记录</text>
+    </view>
+
+    <view class="record-status" wx:if="{{loading}}">
+      <text>正在读取记录...</text>
+    </view>
+
+    <view class="record-status record-status--error" wx:elif="{{error}}">
+      <text>{{error}}</text>
+    </view>
+
+    <view class="record-status" wx:elif="{{!recordRows.length}}">
+      <text>还没有已吃记录，去首页确认一餐吧。</text>
+    </view>
+
+    <view wx:else>
+      <view
+        class="record-row"
+        wx:for="{{recordRows}}"
+        wx:key="date"
+      >
+        <text class="record-date">{{item.displayDate}}</text>
+        <text class="record-meal">午餐：{{item.lunch}}</text>
+        <text class="record-meal">晚餐：{{item.dinner}}</text>
+      </view>
+    </view>
+  </view>
+</view>

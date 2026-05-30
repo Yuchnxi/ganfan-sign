@@ -3,6 +3,14 @@
     "pages/home/home",
     "pages/mine/mine"
   ],
+  "subPackages": [
+    {
+      "root": "packageSub",
+      "pages": [
+        "records/records"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTitleText": "干饭签",
     "navigationBarBackgroundColor": "#FFF4D6",
