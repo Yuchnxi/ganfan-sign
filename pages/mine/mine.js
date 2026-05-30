@@ -179,9 +179,17 @@ Page({
   },
 
   // 进入我的菜单页面。
-  onMenuSettingTap() {
+  onMenuTap() {
     wx.navigateTo({
       url: '/packageSub/menu-edit/menu-edit'
+    });
+  },
+
+  // 设置页暂未接入时保留明确入口，避免齿轮图标跳到其他页面。
+  onSettingsTap() {
+    wx.showToast({
+      title: '设置页待搭建',
+      icon: 'none'
     });
   }
 });

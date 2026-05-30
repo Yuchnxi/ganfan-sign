@@ -58,7 +58,6 @@
       <button class="btn-primary draw-button" loading="{{loading}}" disabled="{{loading}}" bindtap="onDrawTap">
         {{loading ? '求签中...' : '求一签'}}
       </button>
-      <text class="draw-count">今日可抽 <text class="draw-count-strong">{{remainingDraws}}</text> 次 ✨</text>
     </view>
   </view>
 
