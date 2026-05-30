@@ -63,6 +63,9 @@
 
   <view class="result-mask" wx:if="{{showResultDialog && drawResult}}">
     <view class="result-dialog">
+      <view class="result-close" bindtap="onCloseResultTap">
+        <text class="result-close__icon">×</text>
+      </view>
       <view class="result-ribbon">
         <text>今日{{drawResult.mealTypeLabel}}签</text>
       </view>

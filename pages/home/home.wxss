@@ -351,6 +351,32 @@
   box-shadow: 0 18rpx 42rpx rgba(111, 53, 22, 0.22);
 }
 
+.result-close {
+  position: absolute;
+  top: 18rpx;
+  right: 18rpx;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.result-close:active {
+  transform: scale(0.94);
+}
+
+.result-close__icon {
+  color: var(--home-muted-color);
+  font-size: 40rpx;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .result-ribbon {
   position: absolute;
   top: -30rpx;

@@ -187,6 +187,18 @@ Page({
     });
   },
 
+  // 关闭当前结果弹框；记录保持未采纳，统计不会计入这次结果。
+  onCloseResultTap() {
+    if (this.data.loading) {
+      return;
+    }
+
+    this.setData({
+      showResultDialog: false,
+      drawResult: null
+    });
+  },
+
   // 用户确认“就吃这个”后，将当前记录标记为 accepted。
   async onAcceptTap() {
     if (this.data.loading || !this.data.drawResult) {
